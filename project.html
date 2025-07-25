@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Multiplication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+            color: #333;
+        }
+
+        h2 {
+            color: #0066cc;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Multiplication Results</h2>
+
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+    <p id="result4"></p>
+
+    <script>
+        // Simple function to multiply two numbers
+        function multiply(x, y) {
+            return x * y;
+        }
+
+        // Fixed multiplication values
+        var result1 = multiply(1234, 5678);
+        var result2 = multiply(11111, 9999);
+        var result3 = multiply(123456, 7890);
+        var result4 = multiply(100000, 100000);
+
+        // Show results
+        document.getElementById("result1").textContent = "1234 × 5678 = " + result1;
+        document.getElementById("result2").textContent = "11111 × 9999 = " + result2;
+        document.getElementById("result3").textContent = "123456 × 7890 = " + result3;
+        document.getElementById("result4").textContent = "100000 × 100000 = " + result4;
+    </script>
+
+</body>
+
+</html>
