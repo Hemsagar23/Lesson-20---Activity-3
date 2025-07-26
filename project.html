@@ -2,52 +2,99 @@
 <html>
 
 <head>
-    <title>Simple Multiplication</title>
+    <title>Multiple Multiplications</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f0f8ff;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
+            padding: 40px;
+            text-align: center;
         }
 
         h2 {
-            color: #0066cc;
+            color: #2c3e50;
+            font-size: 28px;
         }
 
-        p {
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        li {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin: 8px auto;
+            width: 60%;
+            border-radius: 8px;
             font-size: 18px;
-            margin: 10px 0;
+        }
+
+        li:nth-child(even) {
+            background-color: #d6eaf8;
+        }
+
+        li.error {
+            color: red;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <h2>Multiplication Results</h2>
+    <h2>Multiplication Examples</h2>
+    <button onclick="showResults()">Show Multiplications</button>
 
-    <p id="result1"></p>
-    <p id="result2"></p>
-    <p id="result3"></p>
-    <p id="result4"></p>
+    <ul id="resultsList"></ul>
 
     <script>
-        // Simple function to multiply two numbers
-        function multiply(x, y) {
-            return x * y;
+        function multiply(a, b) {
+            if (a === undefined || b === undefined || isNaN(a) || isNaN(b)) {
+                return "<span class='error'>Error: Invalid values</span>";
+            }
+            return a + " × " + b + " = " + (a * b);
         }
 
-        // Fixed multiplication values
-        var result1 = multiply(1234, 5678);
-        var result2 = multiply(11111, 9999);
-        var result3 = multiply(123456, 7890);
-        var result4 = multiply(100000, 100000);
+        function showResults() {
+            var results = [
+                multiply(3, 4),
+                multiply(5, 6),
+                multiply(7, 2),
+                multiply(10, 0),
+                multiply(9),            // One value undefined
+                multiply("a", 2)        // Invalid input
+            ];
 
-        // Show results
-        document.getElementById("result1").textContent = "1234 × 5678 = " + result1;
-        document.getElementById("result2").textContent = "11111 × 9999 = " + result2;
-        document.getElementById("result3").textContent = "123456 × 7890 = " + result3;
-        document.getElementById("result4").textContent = "100000 × 100000 = " + result4;
+            var list = document.getElementById("resultsList");
+            list.innerHTML = "";
+
+            for (var i = 0; i < results.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = results[i];
+                if (results[i].includes("Error")) {
+                    li.classList.add("error");
+                }
+                list.appendChild(li);
+            }
+        }
     </script>
 
 </body>
